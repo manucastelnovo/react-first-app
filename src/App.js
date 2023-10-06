@@ -10,15 +10,15 @@ function App() {
     },
     {
       id: "e2",
-      title: "Car Insurance",
+      title: "Bus ",
       amount: 245.25,
-      date: new Date(2021, 2, 28),
+      date: new Date(2021, 3, 23),
     },
     {
       id: "e3",
-      title: "Car Insurance",
+      title: "Train",
       amount: 245.25,
-      date: new Date(2021, 2, 28),
+      date: new Date(2021, 9, 8),
     },
   ];
   return (

@@ -52,6 +52,7 @@ const ExpenseForm = () => {
             onChange={(event) => {
               inputChangeHandler("title", event.target.value);
             }}
+            value={enteredTitle}
           />
         </div>
         <div className="new-expense__control">
@@ -63,6 +64,7 @@ const ExpenseForm = () => {
             onChange={(event) => {
               inputChangeHandler("amount", event.target.value);
             }}
+            value={enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -74,6 +76,7 @@ const ExpenseForm = () => {
             onChange={(event) => {
               inputChangeHandler("date", event.target.value);
             }}
+            value={enteredDate}
           />
         </div>
         <div className="new-expense__actions">

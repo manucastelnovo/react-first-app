@@ -8,17 +8,10 @@ function ExpenseList(props) {
   const [filterInfoText, setFilterInfoText] = useState("2019, 2021 ^ 2022");
 
   const filterChangeHandler = (selectedYear) => {
-    console.log("Expenses.js");
-    setFilteredYear(selectedYear);
-    if (selectedYear === "2019") {
-      setFilterInfoText("2020,2021 & 2022");
-    } else if (selectedYear === "2020") {
-      setFilterInfoText("2019,2021 & 2022");
-    } else if (selectedYear === "2021") {
-      setFilterInfoText("2019, 2020 & 2021");
-    } else {
-      setFilterInfoText("2019, 2020 & 2021");
-    }
+    console.log("selectedYear", selectedYear);
+    setFilteredYear(() => selectedYear);
+    console.log(() => "filteredYear", filteredYear);
+    props.filtereExpenseList(selectedYear);
   };
   return (
     <div>
@@ -27,10 +20,15 @@ function ExpenseList(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         ></ExpensesFilter>
-        <p>{filterInfoText}</p>
-        <ExpenseItem expense={props.expenseList[0]} />
-        <ExpenseItem expense={props.expenseList[1]} />
-        <ExpenseItem expense={props.expenseList[2]} />
+        <p>{filteredYear}</p>
+
+        {props.expenseList.length === 0 ? (
+          <p> No expense found.</p>
+        ) : (
+          props.expenseList.map((expenses) => (
+            <ExpenseItem expense={expenses} key={expenses.id} />
+          ))
+        )}
       </div>
     </div>
   );

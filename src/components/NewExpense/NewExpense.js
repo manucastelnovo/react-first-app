@@ -5,6 +5,9 @@ import ExpenseForm from "./ExpenseForm";
 const NewExpense = (props) => {
   const [newExpenseIsShow, setNewExpenseIsShow] = useState(true);
   // const titleChangeHAnder=()
+  const showFormNewExpenseHandler = () => {
+    setNewExpenseIsShow((prevStatus) => !prevStatus);
+  };
   const saveExpenseDateHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -14,8 +17,14 @@ const NewExpense = (props) => {
   };
   return (
     <div className="new-expense">
-      <button>Add New Expense</button>
-      <ExpenseForm onSaveExpenseData={saveExpenseDateHandler} />
+      {newExpenseIsShow ? (
+        <button onClick={showFormNewExpenseHandler}>Add New Expense</button>
+      ) : (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDateHandler}
+          showFormNewExpenseHandler={showFormNewExpenseHandler}
+        />
+      )}
     </div>
   );
 };
